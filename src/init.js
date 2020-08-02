@@ -281,6 +281,75 @@ const init = async (connection) => {
 
       connection.query(employeesQuery, onQuery);
     }
+    if (action === "updateManager") {
+      const employeesQuery = "SELECT * FROM employee";
+      const managersQuery = `SELECT employee.id, employee.first_name, employee.last_name FROM employee
+      INNER JOIN (SELECT DISTINCT(manager_id) FROM roster_db.employee WHERE manager_id IS NOT NULL) as manager
+      on employee.id = manager.manager_id`;
+
+      const query = `${employeesQuery};${managersQuery}`;
+
+      const onQuery = async (err, [employees, managers]) => {
+        if (err) {
+          throw err;
+        }
+
+        const employeeChoices = employees.map((employee) => {
+          return {
+            name: `${employee.first_name} ${employee.last_name}`,
+            value: employee.id,
+            short: `${employee.first_name} ${employee.last_name}`,
+          };
+        });
+
+        const employeeQuestions = [
+          {
+            message: "Select your employee:",
+            name: "employeeId",
+            type: "list",
+            choices: employeeChoices,
+          },
+        ];
+
+        const { employeeId } = await inquirer.prompt(employeeQuestions);
+
+        const managerChoices = managers.map((manager) => {
+          return {
+            name: `${manager.first_name} ${manager.last_name}`,
+            value: manager.id,
+            short: `${manager.first_name} ${manager.last_name}`,
+          };
+        });
+
+        const managerQuestions = [
+          {
+            message: "Select your Manager:",
+            name: "managerId",
+            type: "list",
+            choices: managerChoices,
+          },
+        ];
+
+        const { managerId } = await inquirer.prompt(managerQuestions);
+
+        const updateManagerQuery = `UPDATE employee SET manager_id=${managerId} WHERE id=${employeeId} `;
+
+        const onQuery = (err) => {
+          if (err) {
+            throw err;
+          }
+          console.log("Successfully updated manager in db!");
+          init(connection);
+        };
+
+        connection.query(updateManagerQuery, onQuery);
+      };
+
+      connection.query(query, onQuery);
+    }
+    if (action === "finish") {
+      process.exit();
+    }
   } catch (err) {
     throw err;
   }
