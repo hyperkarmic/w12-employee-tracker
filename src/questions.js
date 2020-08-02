@@ -9,7 +9,6 @@ const questions = [
         value: "viewAll",
         short: "View All Employees",
       },
-
       {
         name: "View All Employees By Department",
         value: "empByDepartment",
