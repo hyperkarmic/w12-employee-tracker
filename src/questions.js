@@ -40,14 +40,9 @@ const questions = [
         short: "Add Role",
       },
       {
-        name: "View All Employees",
-        value: "viewAllEmployees",
-        short: "View All Employees",
-      },
-      {
-        name: "Update Employee Roll",
-        value: "updateRoll",
-        short: "Update Roll",
+        name: "Update Employee Role",
+        value: "updateRole",
+        short: "Update Role",
       },
       {
         name: "Update Employee Manager",

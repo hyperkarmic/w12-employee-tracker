@@ -108,6 +108,28 @@ const init = async (connection) => {
 
       connection.query(query, onQuery);
     }
+    if (action === "addDepartment") {
+      const addDepartmentQuestions = [
+        {
+          message: "Department Name:",
+          name: "name",
+        },
+      ];
+
+      const { name } = await inquirer.prompt(addDepartmentQuestions);
+
+      const query = `INSERT INTO department (name) VALUES ("${name}") `;
+
+      const onQuery = (err, rows) => {
+        if (err) {
+          throw err;
+        }
+        console.log("Successfully added department to db");
+        init(connection);
+      };
+
+      connection.query(query, onQuery);
+    }
   } catch (err) {
     throw err;
   }
