@@ -16,7 +16,7 @@ const onConnect = (err) => {
     throw err;
   }
   console.log("successfully connected to DB!");
-  init();
+  init(connection);
 };
 
 connection.connect(onConnect);
