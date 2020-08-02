@@ -1,3 +1,5 @@
+//these are the initial questions for the cli - in inquirer format
+
 const questions = [
   {
     message: "What would you like to do?",

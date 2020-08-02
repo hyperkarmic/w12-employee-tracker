@@ -1,3 +1,4 @@
+//function for view all employees
 const viewAllEmployees = (connection) => {
   const query = `
       SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name as department, CONCAT(manager.first_name, ' ', manager.last_name) AS manager

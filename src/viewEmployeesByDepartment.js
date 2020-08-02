@@ -6,6 +6,7 @@ const viewEmployeesByDepartment = (connection, departmentId) => {
         LEFT JOIN employee manager on manager.id = employee.manager_id
         WHERE department.id=${departmentId};
         `;
+  //query to allow 'view all employees by department'
 
   const onQuery = (err, rows) => {
     if (err) throw err;

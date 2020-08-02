@@ -7,6 +7,8 @@ const viewEmployeesByRole = (connection, roleId) => {
         WHERE role.id=${roleId};
         `;
 
+  //query  for 'view Employees by roll'
+
   const onQuery = (err, rows) => {
     if (err) throw err;
     console.table(rows);

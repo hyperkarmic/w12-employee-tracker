@@ -7,6 +7,8 @@ const viewEmployeesByManager = (connection, managerId) => {
         WHERE employee.manager_id=${managerId};
         `;
 
+  //query for 'view all employees by manager
+
   const onQuery = (err, rows) => {
     if (err) throw err;
     console.table(rows);

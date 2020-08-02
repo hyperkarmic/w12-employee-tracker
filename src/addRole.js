@@ -1,6 +1,6 @@
 const addRole = (connection, title, salary, departmentId) => {
   const query = `INSERT INTO role (title, salary, department_id) VALUES ("${title}", ${salary}, ${departmentId})`;
-
+  //query for adding role added
   const onQuery = (err, rows) => {
     if (err) throw err;
 
