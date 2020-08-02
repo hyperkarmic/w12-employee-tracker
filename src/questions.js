@@ -14,11 +14,10 @@ const questions = [
         value: "empByDepartment",
         short: "Employees By Department",
       },
-
       {
-        name: "view employees by Roles",
+        name: "View employees by Role",
         value: "employeesByRoles",
-        short: "View employees by roles",
+        short: "View employees by role",
       },
       {
         name: "View employees By Manager",
