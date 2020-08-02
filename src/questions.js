@@ -25,17 +25,17 @@ const questions = [
         short: "employees by manager",
       },
       {
-        name: "add employee",
+        name: "Add employee",
         value: "addEmployee",
-        short: "add employee",
+        short: "Add employee",
       },
       {
-        name: "add Department",
+        name: "Add Department",
         value: "addDepartment",
-        short: "add department",
+        short: "Add department",
       },
       {
-        name: "add role",
+        name: "Add role",
         value: "addRole",
         short: "Add Role",
       },

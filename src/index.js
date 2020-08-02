@@ -7,6 +7,7 @@ const dbOptions = {
   database: "roster_db",
   user: "root",
   password: "password1!",
+  multipleStatements: true,
 };
 
 const connection = mysql.createConnection(dbOptions);
